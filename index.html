@@ -4,19 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>KCCD Script Hub | Keluarga Cheater Cinta Damai</title>
-  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* ---------- BACKGROUND (GANTI DENGAN LINK KAMU YANG VALID) ---------- */
-    /* NOTE: Link background kamu error 404, jadi saya pakai background keren dari Unsplash dulu.
-       Ganti URL di bawah dengan link background kamu yang benar (pastikan bisa diakses). */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       background: url('https://j.top4top.io/p_37400n1cd1.jpg') center/cover fixed;
       color: #f0f0ff;
@@ -25,45 +16,28 @@
       position: relative;
       animation: bgFade 1.5s ease-out;
     }
-    @keyframes bgFade {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+    @keyframes bgFade { from { opacity: 0; } to { opacity: 1; } }
     body::before {
       content: '';
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: rgba(0, 0, 0, 0.65);
       z-index: -1;
       backdrop-filter: blur(2px);
     }
-
-    /* SCROLLBAR */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #1a1a2e; border-radius: 10px; }
     ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #8a2be2, #a14eff); border-radius: 10px; }
 
-    /* LOADER */
     .loader {
-      position: fixed;
-      inset: 0;
-      background: #050510;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      z-index: 2000;
-      transition: 0.5s;
+      position: fixed; inset: 0; background: #050510;
+      display: flex; justify-content: center; align-items: center;
+      gap: 12px; z-index: 2000; transition: 0.5s;
     }
     .loader .dot {
-      width: 16px;
-      height: 16px;
-      background: #b77cff;
-      border-radius: 50%;
-      animation: pulseUp 0.8s infinite alternate;
+      width: 16px; height: 16px; background: #b77cff;
+      border-radius: 50%; animation: pulseUp 0.8s infinite alternate;
       box-shadow: 0 0 8px #b77cff;
     }
     .loader .dot:nth-child(2) { animation-delay: 0.2s; background: #d68eff; }
@@ -73,13 +47,9 @@
       100% { transform: translateY(-20px); opacity: 1; }
     }
 
-    /* SIDEBAR */
     .sidebar {
-      position: fixed;
-      left: -280px;
-      top: 0;
-      width: 280px;
-      height: 100%;
+      position: fixed; left: -280px; top: 0;
+      width: 280px; height: 100%;
       background: rgba(10, 10, 25, 0.95);
       backdrop-filter: blur(20px);
       padding: 28px 18px;
@@ -90,80 +60,40 @@
     }
     .sidebar.active { left: 0; }
     .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.7);
-      backdrop-filter: blur(4px);
-      opacity: 0;
-      visibility: hidden;
-      transition: 0.3s;
-      z-index: 1100;
+      position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px); opacity: 0; visibility: hidden;
+      transition: 0.3s; z-index: 1100;
     }
     .overlay.active { opacity: 1; visibility: visible; }
     .menu-item {
-      padding: 14px 16px;
-      border-radius: 16px;
-      margin: 8px 0;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-weight: 500;
-      color: #cdcdff;
-      transition: all 0.25s;
-      position: relative;
-      overflow: hidden;
+      padding: 14px 16px; border-radius: 16px; margin: 8px 0;
+      cursor: pointer; display: flex; align-items: center; gap: 14px;
+      font-weight: 500; color: #cdcdff; transition: all 0.25s;
+      position: relative; overflow: hidden;
     }
     .menu-item::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 0%;
-      height: 100%;
+      content: ''; position: absolute; left: 0; top: 0; width: 0%; height: 100%;
       background: linear-gradient(95deg, #8a2be2, #a14eff);
-      transition: 0.3s;
-      z-index: -1;
-      border-radius: 16px;
+      transition: 0.3s; z-index: -1; border-radius: 16px;
     }
     .menu-item:hover::before { width: 100%; }
     .menu-item i { width: 26px; font-size: 1.3rem; }
     .menu-item:hover { color: white; transform: translateX(5px); }
     .menu-btn {
-      position: fixed;
-      top: 18px;
-      left: 20px;
+      position: fixed; top: 18px; left: 20px;
       background: linear-gradient(135deg, #8a2be2, #a14eff);
-      border: none;
-      padding: 12px 14px;
-      border-radius: 30px;
-      color: white;
-      z-index: 1150;
-      cursor: pointer;
-      font-size: 1.3rem;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.4);
-      transition: 0.2s;
+      border: none; padding: 12px 14px; border-radius: 30px; color: white;
+      z-index: 1150; cursor: pointer; font-size: 1.3rem;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.4); transition: 0.2s;
     }
     .menu-btn:hover { transform: scale(0.95); background: #a14eff; }
 
-    /* HEADER & LOGO */
-    .header {
-      text-align: center;
-      padding: 30px 20px 20px;
-      animation: slideDown 0.8s ease-out;
-    }
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .header { text-align: center; padding: 30px 20px 20px; animation: slideDown 0.8s ease-out; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
     .logo {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 30px;
-      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.5);
-      border: 2px solid rgba(138,43,226,0.6);
-      transition: 0.3s;
+      width: 100px; height: 100px; object-fit: cover;
+      border-radius: 30px; box-shadow: 0 20px 30px -10px rgba(0,0,0,0.5);
+      border: 2px solid rgba(138,43,226,0.6); transition: 0.3s;
       animation: pulseLogo 2s infinite;
     }
     @keyframes pulseLogo {
@@ -172,332 +102,174 @@
       100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(138,43,226,0); }
     }
     .title {
-      margin-top: 12px;
-      font-size: 32px;
-      font-weight: 800;
+      margin-top: 12px; font-size: 32px; font-weight: 800;
       background: linear-gradient(120deg, #ffffff, #cd9eff);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
+      background-clip: text; -webkit-background-clip: text; color: transparent;
       letter-spacing: -0.5px;
     }
-    .sub {
-      font-size: 14px;
-      opacity: 0.8;
-      margin-top: 5px;
-    }
+    .sub { font-size: 14px; opacity: 0.8; margin-top: 5px; }
 
-    /* CATEGORY & SEARCH */
-    .categories {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin: 25px 15px 10px;
-    }
+    .categories { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 25px 15px 10px; }
     .cat-btn {
-      padding: 8px 18px;
-      border: none;
-      border-radius: 60px;
-      background: rgba(30, 30, 55, 0.7);
-      backdrop-filter: blur(4px);
-      color: #cbcbff;
-      font-weight: 500;
-      font-size: 0.8rem;
-      cursor: pointer;
-      transition: all 0.2s;
-      position: relative;
-      overflow: hidden;
+      padding: 8px 18px; border: none; border-radius: 60px;
+      background: rgba(30, 30, 55, 0.7); backdrop-filter: blur(4px);
+      color: #cbcbff; font-weight: 500; font-size: 0.8rem;
+      cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden;
     }
-    .cat-btn::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 0;
-      height: 2px;
-      background: #b77cff;
-      transition: 0.2s;
-    }
-    .cat-btn.active::after, .cat-btn:hover::after {
-      width: 80%;
-      left: 10%;
-    }
-    .cat-btn.active, .cat-btn:hover {
-      background: #8a2be2;
-      color: white;
-      transform: translateY(-2px);
-    }
-    .search-wrap {
-      max-width: 400px;
-      margin: 5px auto 10px;
-      padding: 0 16px;
-    }
+    .cat-btn::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px; background: #b77cff; transition: 0.2s; }
+    .cat-btn.active::after, .cat-btn:hover::after { width: 80%; left: 10%; }
+    .cat-btn.active, .cat-btn:hover { background: #8a2be2; color: white; transform: translateY(-2px); }
+    .search-wrap { max-width: 400px; margin: 5px auto 10px; padding: 0 16px; }
     .search-box {
-      width: 100%;
-      background: rgba(20,20,45,0.7);
-      border: 1px solid #3a2a6a;
-      border-radius: 60px;
-      padding: 12px 20px;
-      color: white;
-      font-size: 0.9rem;
-      transition: 0.2s;
+      width: 100%; background: rgba(20,20,45,0.7); border: 1px solid #3a2a6a;
+      border-radius: 60px; padding: 12px 20px; color: white; font-size: 0.9rem; transition: 0.2s;
     }
-    .search-box:focus {
-      outline: none;
-      border-color: #b77cff;
-      background: #12122c;
-      box-shadow: 0 0 12px rgba(138,43,226,0.3);
-    }
+    .search-box:focus { outline: none; border-color: #b77cff; background: #12122c; box-shadow: 0 0 12px rgba(138,43,226,0.3); }
 
-    /* GRID & CARD */
-    .container {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 20px 16px 40px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 24px;
-    }
+    .container { max-width: 1300px; margin: 0 auto; padding: 20px 16px 40px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 20px; }
     .card {
-      background: rgba(18, 18, 35, 0.75);
-      backdrop-filter: blur(12px);
-      border-radius: 28px;
-      overflow: hidden;
-      border: 1px solid rgba(138, 43, 226, 0.3);
-      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      position: relative;
-      animation: fadeUp 0.5s ease backwards;
-      animation-delay: calc(var(--i, 0) * 0.05s);
+      background: rgba(18,18,35,0.75); backdrop-filter: blur(12px);
+      border-radius: 28px; overflow: hidden;
+      border: 1px solid rgba(138,43,226,0.2);
+      transition: all 0.3s ease;
+      animation: cardIn 0.5s ease calc(var(--i)*0.06s) both;
     }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: #a14eff;
-      box-shadow: 0 20px 30px -12px rgba(138,43,226,0.4);
-    }
-    .preview {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      transition: 0.3s;
-    }
-    .card:hover .preview { transform: scale(1.03); }
-    .content { padding: 16px 18px 20px; }
-    .category {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      background: #2a1a4a;
-      display: inline-block;
-      padding: 4px 12px;
-      border-radius: 30px;
-      color: #cdabff;
-    }
-    .name {
-      font-weight: 700;
-      font-size: 1.2rem;
-      margin: 10px 0 5px;
-    }
-    .desc {
-      font-size: 0.75rem;
-      color: #b9b9e6;
-      margin-bottom: 14px;
-      line-height: 1.4;
-    }
+    @keyframes cardIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .card:hover { transform: translateY(-8px) scale(1.01); border-color: #8a2be2; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+    .preview { width: 100%; height: 170px; object-fit: cover; display: block; }
+    .content { padding: 18px; }
+    .category { font-size: 0.65rem; letter-spacing: 1.5px; color: #b77cff; font-weight: 700; }
+    .name { font-size: 1.1rem; font-weight: 700; margin: 6px 0 4px; }
+    .desc { font-size: 0.82rem; opacity: 0.75; line-height: 1.5; min-height: 38px; }
     .btn {
-      background: linear-gradient(95deg, #6c1fdb, #9b4dff);
-      border: none;
-      padding: 8px 16px;
-      border-radius: 40px;
-      color: white;
-      font-weight: 600;
-      font-size: 0.75rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 14px; padding: 10px 20px; border: none; border-radius: 30px;
+      background: linear-gradient(135deg, #8a2be2, #a14eff);
+      color: white; font-weight: 600; font-size: 0.85rem;
+      cursor: pointer; transition: all 0.25s;
     }
-    .btn:hover { background: #a14eff; transform: scale(0.96); }
+    .btn:hover { transform: scale(1.04); box-shadow: 0 6px 16px rgba(138,43,226,0.5); }
+    .download-btn { width: 100%; justify-content: center; }
     .delete-btn {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: rgba(0,0,0,0.6);
-      border: none;
-      border-radius: 30px;
-      color: #ff7b7b;
-      padding: 6px 10px;
-      font-size: 12px;
-      cursor: pointer;
-      backdrop-filter: blur(4px);
-      z-index: 5;
-      transition: 0.2s;
+      display: block; width: 100%; margin-top: 8px; padding: 8px;
+      background: rgba(180,30,30,0.7); border: none; border-radius: 20px;
+      color: #ffaaaa; font-size: 0.8rem; cursor: pointer; transition: 0.2s;
     }
-    .delete-btn:hover { background: #ff4444; color: white; transform: scale(1.05); }
-    .progress-bar {
-      width: 100%;
-      height: 5px;
-      background: #2c2c4a;
-      border-radius: 6px;
-      margin-top: 12px;
-      display: none;
-    }
-    .progress {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #b77cff, #e4a2ff);
-      border-radius: 6px;
-    }
+    .delete-btn:hover { background: #8b2c2c; }
+    .progress-bar { display: none; height: 4px; background: #1a1a3a; border-radius: 4px; margin-top: 10px; }
+    .progress { height: 100%; width: 0%; background: linear-gradient(90deg, #8a2be2, #d68eff); border-radius: 4px; transition: width 0.18s; }
+    .empty-msg { text-align: center; color: #7a6a9e; font-size: 1.2rem; padding: 60px 0; grid-column: 1/-1; }
 
-    /* MODAL */
     .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(8px);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 3000;
-      animation: fadeIn 0.2s;
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.75); backdrop-filter: blur(10px);
+      justify-content: center; align-items: center; z-index: 1500; padding: 20px;
     }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     .modal-box {
-      background: #18182b;
-      border-radius: 32px;
-      padding: 28px 24px;
-      width: 90%;
-      max-width: 450px;
-      border: 1px solid #a14eff;
-      animation: scaleUp 0.2s;
+      background: linear-gradient(145deg, #0d0d22, #16163a);
+      border: 1px solid #3a2a6a; border-radius: 32px;
+      padding: 36px 28px; max-width: 400px; width: 100%;
+      text-align: center; box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+      animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    @keyframes scaleUp { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-    .modal-box h3 { margin-bottom: 20px; text-align: center; }
+    @keyframes popIn { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .modal-box h3 { margin: 14px 0 20px; font-size: 1.4rem; }
     .modal-box input, .modal-box textarea {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 16px;
-      background: #0f0f22;
-      border: 1px solid #3a2a6a;
-      border-radius: 24px;
-      color: white;
-      font-family: inherit;
+      width: 100%; padding: 12px 16px; margin: 8px 0;
+      background: #0f0f22; border: 1px solid #3a2a6a; border-radius: 16px;
+      color: white; font-size: 0.9rem; transition: 0.2s;
     }
+    .modal-box input:focus, .modal-box textarea:focus { outline: none; border-color: #b77cff; }
     .modal-box button {
-      width: 100%;
-      padding: 10px;
-      background: #8a2be2;
-      border: none;
-      border-radius: 40px;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 8px;
+      width: 100%; margin-top: 12px; padding: 14px;
+      background: linear-gradient(135deg, #8a2be2, #a14eff);
+      border: none; border-radius: 20px; color: white;
+      font-weight: 700; font-size: 1rem; cursor: pointer; transition: 0.2s;
     }
-    .modal-box .cancel-btn { background: #2e2e54; }
+    .modal-box button:hover { transform: scale(1.02); box-shadow: 0 8px 20px rgba(138,43,226,0.4); }
+    .cancel-btn { background: rgba(60,40,100,0.5) !important; margin-top: 8px !important; }
+    .cancel-btn:hover { background: rgba(80,50,120,0.7) !important; }
+
     .toast-notif {
-      position: fixed;
-      bottom: 25px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #1e1e3a;
-      backdrop-filter: blur(12px);
-      padding: 12px 24px;
-      border-radius: 60px;
-      color: white;
-      font-size: 0.85rem;
-      z-index: 1600;
-      border-left: 4px solid #b77cff;
-      opacity: 0;
-      transition: 0.2s;
-      pointer-events: none;
+      position: fixed; bottom: 24px; right: 24px;
+      background: #1e2a3e; border-left: 4px solid #b77cff;
+      color: white; padding: 14px 20px; border-radius: 16px;
+      opacity: 0; transition: opacity 0.4s; z-index: 3000;
+      font-size: 0.9rem; max-width: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     }
-    .empty-msg { text-align: center; padding: 40px; color: #aaaaff; grid-column: 1/-1; }
-    .page { display: none; animation: pageFade 0.3s ease; }
+
+    .page { display: none; }
     .active-page { display: block; }
-    @keyframes pageFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* TEAM */
-    .team-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 30px; }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 24px; padding: 40px 0; }
     .team-card {
-      background: rgba(30,30,55,0.7);
-      backdrop-filter: blur(8px);
-      border-radius: 40px;
-      padding: 24px 28px;
-      text-align: center;
-      width: 240px;
-      border: 1px solid rgba(138,43,226,0.4);
-      transition: 0.3s;
+      background: rgba(20,20,45,0.75); backdrop-filter: blur(12px);
+      border-radius: 28px; padding: 32px 20px; text-align: center;
+      border: 1px solid rgba(138,43,226,0.2); transition: 0.3s;
     }
-    .team-card:hover { transform: translateY(-8px); border-color: #b77cff; }
+    .team-card:hover { transform: translateY(-8px); border-color: #8a2be2; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
     .team-avatar {
-      width: 100px;
-      height: 100px;
-      background: linear-gradient(145deg, #8a2be2, #b97eff);
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      color: white;
-      margin-bottom: 15px;
+      width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 16px;
+      background: linear-gradient(135deg, #8a2be2, #a14eff);
+      display: flex; align-items: center; justify-content: center; font-size: 2rem;
     }
-
-    /* CREDIT */
-    .credit-container { max-width: 1000px; margin: 20px auto; padding: 20px; }
+    .credit-container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
     .credit-header { text-align: center; margin-bottom: 40px; }
     .credit-header h2 { font-size: 2.2rem; background: linear-gradient(135deg, #fff, #c084fc); background-clip: text; -webkit-background-clip: text; color: transparent; }
     .credit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 25px; }
     .credit-card {
-      background: rgba(20,20,45,0.75);
-      backdrop-filter: blur(12px);
-      border-radius: 28px;
-      padding: 24px;
-      text-align: center;
-      transition: 0.3s;
+      background: rgba(20,20,45,0.75); backdrop-filter: blur(12px);
+      border-radius: 28px; padding: 24px; text-align: center; transition: 0.3s;
     }
     .credit-card:hover { transform: translateY(-5px); border-color: #a14eff; }
+    .credit-icon { font-size: 2rem; color: #b77cff; margin-bottom: 12px; }
+    .credit-footer { text-align: center; margin-top: 40px; opacity: 0.7; }
 
-    /* REQUESTS */
     .requests-container { max-width: 1000px; margin: 20px auto; padding: 20px; }
-    .request-form { background: rgba(20,20,45,0.75); backdrop-filter: blur(12px); border-radius: 32px; padding: 24px; margin-bottom: 40px; }
-    .request-card { background: rgba(18,18,35,0.75); border-radius: 28px; padding: 20px; margin-bottom: 24px; transition: 0.2s; }
+    .request-form {
+      background: rgba(20,20,45,0.75); backdrop-filter: blur(12px);
+      border-radius: 32px; padding: 24px; margin-bottom: 40px;
+    }
+    .request-form h3 { margin-bottom: 16px; }
+    .request-form input, .request-form textarea {
+      width: 100%; padding: 12px 16px; margin: 8px 0;
+      background: #0f0f22; border: 1px solid #3a2a6a; border-radius: 16px;
+      color: white; font-size: 0.9rem;
+    }
+    .request-card {
+      background: rgba(18,18,35,0.75); border-radius: 28px; padding: 20px;
+      margin-bottom: 24px; transition: 0.2s; border: 1px solid rgba(138,43,226,0.15);
+    }
     .request-card:hover { border-color: #a14eff; transform: translateX(5px); }
+    .request-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+    .request-title { font-weight: 700; font-size: 1rem; }
+    .request-user { font-size: 0.8rem; color: #b77cff; }
+    .request-desc { font-size: 0.88rem; opacity: 0.8; line-height: 1.6; margin-bottom: 10px; }
+    .request-meta { font-size: 0.75rem; color: #7a6a9e; }
+    .reply-section { margin-top: 14px; padding: 12px; background: rgba(138,43,226,0.1); border-radius: 16px; border-left: 3px solid #8a2be2; }
+    .reply-author { font-weight: 700; color: #b77cff; margin-right: 6px; }
+    .reply-btn { margin-top: 12px; padding: 8px 16px; background: #8a2be2; border: none; border-radius: 16px; color: white; cursor: pointer; font-size: 0.85rem; }
+    .empty-requests { text-align: center; color: #7a6a9e; padding: 40px; }
 
-    /* CHAT */
     .chat-container { max-width: 800px; margin: 20px auto; padding: 20px; }
+    .chat-header { text-align: center; margin-bottom: 20px; }
     .chat-messages {
-      background: rgba(20,20,45,0.6);
-      backdrop-filter: blur(12px);
-      border-radius: 28px;
-      padding: 20px;
-      height: 450px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 20px;
+      background: rgba(20,20,45,0.6); backdrop-filter: blur(12px);
+      border-radius: 28px; padding: 20px; height: 450px; overflow-y: auto;
+      display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;
     }
-    .message {
-      max-width: 80%;
-      padding: 10px 14px;
-      border-radius: 20px;
-      animation: messagePop 0.2s ease;
-    }
+    .message { max-width: 80%; padding: 10px 14px; border-radius: 20px; animation: messagePop 0.2s ease; }
     @keyframes messagePop { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     .message-mine { align-self: flex-end; background: linear-gradient(95deg, #8a2be2, #a14eff); border-bottom-right-radius: 5px; }
     .message-other { align-self: flex-start; background: rgba(30,30,55,0.9); border-bottom-left-radius: 5px; }
+    .message-username { display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 4px; opacity: 0.8; }
     .chat-input-area { display: flex; gap: 12px; background: rgba(20,20,45,0.6); backdrop-filter: blur(12px); padding: 16px; border-radius: 60px; }
     .chat-input { flex: 1; background: #0f0f22; border: 1px solid #3a2a6a; border-radius: 40px; padding: 12px 20px; color: white; }
     .chat-send-btn { background: #8a2be2; border: none; border-radius: 40px; padding: 0 24px; color: white; font-weight: bold; cursor: pointer; }
     .footer-credit { text-align: center; padding: 20px; font-size: 11px; color: #7a6a9e; }
+    .help-text { font-size: 0.78rem; color: #7a6a9e; margin-top: 10px; }
+    .sync-indicator { text-align: center; font-size: 0.75rem; color: #b77cff; padding: 6px; opacity: 0.8; }
   </style>
 </head>
 <body>
@@ -519,20 +291,18 @@
 </div>
 
 <div class="header">
-  <!-- LOGO dari link Anda (valid) -->
   <img src="https://i.top4top.io/p_37407gpz90.png" class="logo" alt="Logo KCCD">
   <div class="title">KCCD OFFICIAL</div>
   <div class="sub">Website Kumpulan Mod GTA SAMP Roleplay by Team KCCD</div>
 </div>
 
-<!-- HOME -->
 <div id="home" class="page active-page">
+  <div class="sync-indicator" id="syncIndicator">🔄 Memuat data...</div>
   <div class="categories" id="categoriesContainer"></div>
   <div class="search-wrap"><input type="text" id="searchInput" class="search-box" placeholder="🔍 Cari script..."></div>
   <div class="container"><div class="grid" id="scriptsGrid"></div></div>
 </div>
 
-<!-- TEAM -->
 <div id="team" class="page">
   <div class="container">
     <div class="team-grid">
@@ -544,7 +314,6 @@
   </div>
 </div>
 
-<!-- CREDIT -->
 <div id="credit" class="page">
   <div class="credit-container">
     <div class="credit-header"><h2><i class="fas fa-crown"></i> tqto support</h2><p>Terima kasih kepada semua pihak</p></div>
@@ -552,20 +321,14 @@
       <div class="credit-card"><div class="credit-icon"><i class="fas fa-code"></i></div><h3>Developer</h3><p>Charles Shelby<br>Membangun Website</p></div>
       <div class="credit-card"><div class="credit-icon"><i class="fas fa-palette"></i></div><h3>Desain & UI</h3><p>YazZz<br>Tampilan elegan & responsif</p></div>
       <div class="credit-card"><div class="credit-icon"><i class="fas fa-users"></i></div><h3>Komunitas</h3><p>Keluarga Cheater Cinta Damai (KCCD)<br>Supporters :<br>
-      [+] Charless Shelby<br>
-     [+]  Yanzz Shelby<br>
-      [+] bahlil Shelby<br>
-     [+]  Ryzen Shelby<br>
-     [+]  jokowi Shelby<br>
-     [+]  guza Shelby<br>
-    [+]   kamel Shelby</p></div>
+      [+] Charless Shelby<br>[+] Yanzz Shelby<br>[+] bahlil Shelby<br>
+      [+] Ryzen Shelby<br>[+] jokowi Shelby<br>[+] guza Shelby<br>[+] kamel Shelby</p></div>
       <div class="credit-card"><div class="credit-icon"><i class="fas fa-database"></i></div><h3>Social Media</h3><p>Channel: https://whatsapp.com/channel<br>/0029VbBXhHEIHphEfEiPGY3B<br>👑 jangan lupa masuk 👑</p></div>
     </div>
     <div class="credit-footer"><i class="fas fa-heart"></i> Dibangun dengan semangat komunitas modding <i class="fas fa-heart"></i><br><small>© 2026 Team KCCD</small></div>
   </div>
 </div>
 
-<!-- REQUESTS -->
 <div id="requests" class="page">
   <div class="requests-container">
     <div class="request-form">
@@ -578,7 +341,6 @@
   </div>
 </div>
 
-<!-- CHAT -->
 <div id="chat" class="page">
   <div class="chat-container">
     <div class="chat-header"><h2><i class="fas fa-comments"></i> Chat Room KCCD</h2><p>Diskusi santai antar member</p></div>
@@ -590,7 +352,6 @@
   </div>
 </div>
 
-<!-- MODALS -->
 <div class="modal" id="addScriptModal"><div class="modal-box"><h3><i class="fas fa-plus-circle"></i> Tambah Script Baru</h3><input type="text" id="scriptName" placeholder="Nama Script *"><textarea id="scriptDesc" placeholder="Deskripsi..."></textarea><input type="text" id="scriptCategory" placeholder="Kategori *"><input type="text" id="scriptImgUrl" placeholder="Link Gambar (opsional)"><input type="text" id="scriptUrl" placeholder="Link Download *"><button id="submitAddScript">Tambah</button><button class="cancel-btn" id="closeAddModal">Batal</button></div></div>
 <div class="modal" id="replyModal"><div class="modal-box"><h3>Balas Permintaan</h3><textarea id="replyText" rows="4" placeholder="Tulis balasan..."></textarea><button id="sendReplyBtn">Kirim Balasan</button><button class="cancel-btn" id="closeReplyModal">Batal</button></div></div>
 <div class="modal" id="loginModal" style="display: flex;"><div class="modal-box"><i class="fas fa-user-circle" style="font-size: 3rem;"></i><h3>Login Access</h3><input type="text" id="loginUsername" placeholder="Nama kamu"><button id="loginBtn">Login</button><div class="help-text" style="text-align:center;">nama bebas</div></div></div>
@@ -598,7 +359,18 @@
 <div id="toastMsg" class="toast-notif"></div>
 
 <script>
-  // ---------- GLOBAL ----------
+  // =====================================================
+  // ⚠️ GANTI INI DENGAN BIN ID DAN API KEY KAMU YANG BARU
+  const JSONBIN_BIN_ID = "69c9ad4236566621a85d3009";
+  const JSONBIN_API_KEY = "$2a$10$AtdZdcgwth9rhA9AVoOLde5lfMvzXvkGHVSFl2mBJ29.p43Tl3Nc.";
+  // =====================================================
+
+  const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
+  const JSONBIN_HEADERS = {
+    "Content-Type": "application/json",
+    "X-Master-Key": JSONBIN_API_KEY
+  };
+
   let masterScripts = [];
   let currentFilter = "all";
   let currentSearch = "";
@@ -608,7 +380,6 @@
   let currentReplyId = null;
   let chatMessages = [];
 
-  // DOM
   const gridContainer = document.getElementById("scriptsGrid");
   const categoriesContainer = document.getElementById("categoriesContainer");
   const searchInput = document.getElementById("searchInput");
@@ -626,73 +397,268 @@
   const chatMessagesDiv = document.getElementById("chatMessages");
   const chatInput = document.getElementById("chatInput");
   const chatSendBtn = document.getElementById("chatSendBtn");
+  const syncIndicator = document.getElementById("syncIndicator");
   const WA_LINK = "https://whatsapp.com/channel/0029VbBXhHEIHphEfEiPGY3B";
 
   function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, m => m==='&'?'&amp;': m==='<'?'&lt;':'&gt;'); }
-  function showToast(msg, isError=false) { toastDiv.style.backgroundColor = isError ? "#8b2c2c" : "#1e2a3e"; toastDiv.style.borderLeftColor = isError ? "#ff7070" : "#b77cff"; toastDiv.innerText = msg; toastDiv.style.opacity = "1"; setTimeout(() => toastDiv.style.opacity = "0", 2800); }
+  function showToast(msg, isError=false) {
+    toastDiv.style.backgroundColor = isError ? "#8b2c2c" : "#1e2a3e";
+    toastDiv.style.borderLeftColor = isError ? "#ff7070" : "#b77cff";
+    toastDiv.innerText = msg;
+    toastDiv.style.opacity = "1";
+    setTimeout(() => toastDiv.style.opacity = "0", 2800);
+  }
   function isJoined() { return localStorage.getItem("kccd_joined") === "true"; }
+  function setSyncStatus(msg) { if(syncIndicator) syncIndicator.textContent = msg; }
 
-  // Scripts
-  function loadCustomScripts() { const s = localStorage.getItem("kccd_custom_scripts"); if(s) try{return JSON.parse(s)}catch(e){return []} return []; }
-  function saveCustomScripts(arr) { localStorage.setItem("kccd_custom_scripts", JSON.stringify(arr)); }
-  function refreshMasterScripts() { masterScripts = [...loadCustomScripts()]; renderCategories(); renderScripts(); }
+  // =====================================================
+  // JSONBin: Load & Save (ONLINE, sync antar HP)
+  // =====================================================
+  async function loadCustomScripts() {
+    try {
+      setSyncStatus("🔄 Memuat data dari server...");
+      const res = await fetch(JSONBIN_URL + "/latest", {
+        headers: { "X-Master-Key": JSONBIN_API_KEY }
+      });
+      if (!res.ok) throw new Error("Gagal fetch");
+      const data = await res.json();
+      setSyncStatus("✅ Data berhasil dimuat");
+      return Array.isArray(data.record) ? data.record : [];
+    } catch(e) {
+      setSyncStatus("⚠️ Gagal koneksi server, pakai data lokal");
+      // fallback ke localStorage jika offline
+      const s = localStorage.getItem("kccd_custom_scripts");
+      if(s) try{ return JSON.parse(s); } catch(e2){ return []; }
+      return [];
+    }
+  }
+
+  async function saveCustomScripts(arr) {
+    try {
+      setSyncStatus("💾 Menyimpan ke server...");
+      const res = await fetch(JSONBIN_URL, {
+        method: "PUT",
+        headers: JSONBIN_HEADERS,
+        body: JSON.stringify(arr)
+      });
+      if (!res.ok) throw new Error("Gagal simpan");
+      // backup lokal juga
+      localStorage.setItem("kccd_custom_scripts", JSON.stringify(arr));
+      setSyncStatus("✅ Tersimpan & sync ke semua HP");
+    } catch(e) {
+      // simpan lokal saja jika gagal
+      localStorage.setItem("kccd_custom_scripts", JSON.stringify(arr));
+      setSyncStatus("⚠️ Hanya tersimpan lokal (cek koneksi)");
+      showToast("Gagal sync ke server, tersimpan lokal", true);
+    }
+  }
+
+  async function refreshMasterScripts() {
+    masterScripts = await loadCustomScripts();
+    renderCategories();
+    renderScripts();
+  }
 
   function renderCategories() {
-    const catsSet = new Set(); masterScripts.forEach(s => catsSet.add(s.category.toLowerCase()));
+    const catsSet = new Set();
+    masterScripts.forEach(s => catsSet.add(s.category.toLowerCase()));
     const unique = Array.from(catsSet).sort();
     let html = `<button class="cat-btn ${currentFilter==='all'?'active':''}" data-cat="all"><i class="fas fa-layer-group"></i> Semua</button>`;
-    unique.forEach(cat => { html += `<button class="cat-btn ${currentFilter===cat?'active':''}" data-cat="${cat}"><i class="fas fa-tag"></i> ${cat.charAt(0).toUpperCase()+cat.slice(1)}</button>`; });
+    unique.forEach(cat => {
+      html += `<button class="cat-btn ${currentFilter===cat?'active':''}" data-cat="${cat}"><i class="fas fa-tag"></i> ${cat.charAt(0).toUpperCase()+cat.slice(1)}</button>`;
+    });
     categoriesContainer.innerHTML = html;
-    document.querySelectorAll(".cat-btn").forEach(btn => btn.addEventListener("click", (e) => { currentFilter = btn.dataset.cat; renderCategories(); renderScripts(); }));
+    document.querySelectorAll(".cat-btn").forEach(btn => btn.addEventListener("click", () => {
+      currentFilter = btn.dataset.cat;
+      renderCategories();
+      renderScripts();
+    }));
   }
 
   function renderScripts() {
-    let filtered = masterScripts.filter(s => (currentFilter==='all' || s.category.toLowerCase()===currentFilter) && (currentSearch==='' || s.name.toLowerCase().includes(currentSearch.toLowerCase()) || s.desc.toLowerCase().includes(currentSearch.toLowerCase())));
-    if(filtered.length===0) { gridContainer.innerHTML = `<div class="empty-msg"><i class="fas fa-box-open"></i> Belum ada script. ${currentUser==='Charless'?'Klik Add Script':'Hubungi admin'}</div>`; return; }
-    gridContainer.innerHTML = filtered.map((s,i) => { let img = s.img?.trim() || "https://via.placeholder.com/400x200?text=No+Image"; return `<div class="card" style="--i:${i%10}"><img src="${img}" class="preview" onerror="this.src='https://via.placeholder.com/400x200?text=Error'"><div class="content"><span class="category">${s.category.toUpperCase()}</span><div class="name">${escapeHtml(s.name)}</div><div class="desc">${escapeHtml(s.desc||'')}</div><button class="btn download-btn" data-url="${s.url}" data-name="${s.name}"><i class="fas fa-download"></i> Download</button><div class="progress-bar"><div class="progress"></div></div>${(s.isCustom && currentUser==='Charless') ? `<button class="delete-btn" data-id="${s.id}"><i class="fas fa-trash-alt"></i> Hapus</button>` : ''}</div></div>`; }).join("");
-    document.querySelectorAll(".download-btn").forEach(btn => btn.addEventListener("click", (e) => { e.stopPropagation(); handleDownload(btn.dataset.url, btn, btn.dataset.name); }));
-    document.querySelectorAll(".delete-btn").forEach(btn => btn.addEventListener("click", (e) => { e.stopPropagation(); deleteCustomScript(btn.dataset.id); }));
+    let filtered = masterScripts.filter(s =>
+      (currentFilter==='all' || s.category.toLowerCase()===currentFilter) &&
+      (currentSearch==='' || s.name.toLowerCase().includes(currentSearch.toLowerCase()) || s.desc.toLowerCase().includes(currentSearch.toLowerCase()))
+    );
+    if(filtered.length===0) {
+      gridContainer.innerHTML = `<div class="empty-msg"><i class="fas fa-box-open"></i> Belum ada script. ${currentUser==='Charless'?'Klik Add Script':'Hubungi admin'}</div>`;
+      return;
+    }
+    gridContainer.innerHTML = filtered.map((s,i) => {
+      let img = s.img?.trim() || "https://via.placeholder.com/400x200?text=No+Image";
+      return `<div class="card" style="--i:${i%10}">
+        <img src="${img}" class="preview" onerror="this.src='https://via.placeholder.com/400x200?text=Error'">
+        <div class="content">
+          <span class="category">${s.category.toUpperCase()}</span>
+          <div class="name">${escapeHtml(s.name)}</div>
+          <div class="desc">${escapeHtml(s.desc||'')}</div>
+          <button class="btn download-btn" data-url="${s.url}" data-name="${s.name}"><i class="fas fa-download"></i> Download</button>
+          <div class="progress-bar"><div class="progress"></div></div>
+          ${(currentUser==='Charless') ? `<button class="delete-btn" data-id="${s.id}"><i class="fas fa-trash-alt"></i> Hapus</button>` : ''}
+        </div>
+      </div>`;
+    }).join("");
+    document.querySelectorAll(".download-btn").forEach(btn => btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      handleDownload(btn.dataset.url, btn, btn.dataset.name);
+    }));
+    document.querySelectorAll(".delete-btn").forEach(btn => btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      deleteCustomScript(btn.dataset.id);
+    }));
   }
-  function deleteCustomScript(id) { if(currentUser!=='Charless'){ showToast("Hanya Charless yang dapat menghapus",true); return; } let c = loadCustomScripts(); let n = c.filter(s=>s.id!==id); if(n.length!==c.length){ saveCustomScripts(n); refreshMasterScripts(); showToast("Script dihapus",false); } else showToast("Gagal",true); }
-  function addNewScript(d) { let c = loadCustomScripts(); let newId = "c_"+Date.now()+"_"+Math.random().toString(36).substr(2,6); c.push({ id:newId, name:d.name, desc:d.desc||"", category:d.category.trim().toLowerCase(), img:d.img||"", url:d.url, isCustom:true }); saveCustomScripts(c); refreshMasterScripts(); showToast(`✅ ${d.name} ditambahkan`,false); }
+
+  async function deleteCustomScript(id) {
+    if(currentUser!=='Charless'){ showToast("Hanya Charless yang dapat menghapus", true); return; }
+    let c = [...masterScripts];
+    let n = c.filter(s => s.id !== id);
+    if(n.length !== c.length) {
+      await saveCustomScripts(n);
+      await refreshMasterScripts();
+      showToast("Script dihapus", false);
+    } else {
+      showToast("Gagal menghapus", true);
+    }
+  }
+
+  async function addNewScript(d) {
+    let c = [...masterScripts];
+    let newId = "c_" + Date.now() + "_" + Math.random().toString(36).substr(2,6);
+    c.push({ id: newId, name: d.name, desc: d.desc||"", category: d.category.trim().toLowerCase(), img: d.img||"", url: d.url });
+    await saveCustomScripts(c);
+    await refreshMasterScripts();
+    showToast(`✅ ${d.name} ditambahkan & sync ke semua HP`, false);
+  }
 
   // Download
-  function handleDownload(url, btn, name) { if(!isJoined()){ pendingDownload={url,btn,name}; joinModal.style.display="flex"; return; } startDownload(url,btn,name); }
-  function startDownload(url,btn,name) { let card = btn.closest('.card'); let bar = card.querySelector('.progress-bar'); let prog = bar.querySelector('.progress'); if(btn._interval) clearInterval(btn._interval); bar.style.display="block"; prog.style.width="0%"; let p=0; btn.disabled=true; btn.innerHTML='<i class="fas fa-spinner fa-pulse"></i> Processing'; btn._interval=setInterval(()=>{ p+=Math.random()*18; if(p>=100){ clearInterval(btn._interval); prog.style.width="100%"; setTimeout(()=>{ bar.style.display="none"; btn.disabled=false; btn.innerHTML='<i class="fas fa-download"></i> Download'; if(url.startsWith("#")) showToast(`Demo ${name} siap`,false); else { let a=document.createElement('a'); a.href=url; a.download=name.replace(/\s/g,'_')+'.lua'; a.click(); showToast(`Download ${name} dimulai`,false); } },300); } else prog.style.width=p+"%"; },180); }
+  function handleDownload(url, btn, name) {
+    if(!isJoined()){ pendingDownload={url,btn,name}; joinModal.style.display="flex"; return; }
+    startDownload(url, btn, name);
+  }
+  function startDownload(url, btn, name) {
+    let card = btn.closest('.card');
+    let bar = card.querySelector('.progress-bar');
+    let prog = bar.querySelector('.progress');
+    if(btn._interval) clearInterval(btn._interval);
+    bar.style.display="block"; prog.style.width="0%";
+    let p=0; btn.disabled=true; btn.innerHTML='<i class="fas fa-spinner fa-pulse"></i> Processing';
+    btn._interval = setInterval(() => {
+      p += Math.random()*18;
+      if(p>=100) {
+        clearInterval(btn._interval); prog.style.width="100%";
+        setTimeout(() => {
+          bar.style.display="none"; btn.disabled=false;
+          btn.innerHTML='<i class="fas fa-download"></i> Download';
+          if(url.startsWith("#")) showToast(`Demo ${name} siap`, false);
+          else { let a=document.createElement('a'); a.href=url; a.download=name.replace(/\s/g,'_')+'.lua'; a.click(); showToast(`Download ${name} dimulai`, false); }
+        }, 300);
+      } else prog.style.width=p+"%";
+    }, 180);
+  }
 
-  // Requests
+  // Requests (tetap localStorage - bisa di-upgrade nanti)
   function loadRequests() { const s = localStorage.getItem("kccd_requests"); if(s) try{return JSON.parse(s)}catch(e){return []} return []; }
   function saveRequests(arr) { localStorage.setItem("kccd_requests", JSON.stringify(arr)); }
-  function addRequest(title, desc, user) { let newReq = { id:Date.now()+"_"+Math.random().toString(36).substr(2,6), title:title.trim(), description:desc.trim(), username:user, timestamp:new Date().toISOString(), reply:null, replyTimestamp:null }; requests.unshift(newReq); saveRequests(requests); renderRequests(); showToast("Permintaan terkirim!",false); }
-  function replyToRequest(id, text) { let idx = requests.findIndex(r=>r.id==id); if(idx!==-1){ requests[idx].reply=text.trim(); requests[idx].replyTimestamp=new Date().toISOString(); saveRequests(requests); renderRequests(); showToast("Balasan terkirim",false); } }
-  function renderRequests() { if(!requestsListDiv) return; if(requests.length===0){ requestsListDiv.innerHTML='<div class="empty-requests"><i class="fas fa-inbox"></i> Belum ada permintaan</div>'; return; } let sorted = [...requests].sort((a,b)=>new Date(b.timestamp)-new Date(a.timestamp)); requestsListDiv.innerHTML = sorted.map(req=>{ let date = new Date(req.timestamp).toLocaleString(); let replyHtml = req.reply ? `<div class="reply-section"><div class="reply-text"><span class="reply-author"><i class="fas fa-reply"></i> Developer:</span> ${escapeHtml(req.reply)}<div style="font-size:0.7rem; color:#aaa;">${new Date(req.replyTimestamp).toLocaleString()}</div></div></div>` : ''; let replyBtn = (currentUser==='Charless') ? `<button class="reply-btn" data-id="${req.id}"><i class="fas fa-reply"></i> Balas</button>` : ''; return `<div class="request-card"><div class="request-header"><div class="request-title">${escapeHtml(req.title)}</div><div class="request-user"><i class="fas fa-user"></i> Dari: ${escapeHtml(req.username)}</div></div><div class="request-desc">${escapeHtml(req.description)}</div><div class="request-meta"><i class="far fa-clock"></i> ${date}</div>${replyHtml}${replyBtn}</div>`; }).join(""); document.querySelectorAll(".reply-btn").forEach(btn=>btn.addEventListener("click",(e)=>{ currentReplyId=btn.dataset.id; replyModal.style.display="flex"; })); }
+  function addRequest(title, desc, user) {
+    let newReq = { id: Date.now()+"_"+Math.random().toString(36).substr(2,6), title: title.trim(), description: desc.trim(), username: user, timestamp: new Date().toISOString(), reply: null, replyTimestamp: null };
+    requests.unshift(newReq); saveRequests(requests); renderRequests(); showToast("Permintaan terkirim!", false);
+  }
+  function replyToRequest(id, text) {
+    let idx = requests.findIndex(r=>r.id==id);
+    if(idx!==-1){ requests[idx].reply=text.trim(); requests[idx].replyTimestamp=new Date().toISOString(); saveRequests(requests); renderRequests(); showToast("Balasan terkirim", false); }
+  }
+  function renderRequests() {
+    if(!requestsListDiv) return;
+    if(requests.length===0){ requestsListDiv.innerHTML='<div class="empty-requests"><i class="fas fa-inbox"></i> Belum ada permintaan</div>'; return; }
+    let sorted = [...requests].sort((a,b)=>new Date(b.timestamp)-new Date(a.timestamp));
+    requestsListDiv.innerHTML = sorted.map(req => {
+      let date = new Date(req.timestamp).toLocaleString();
+      let replyHtml = req.reply ? `<div class="reply-section"><div class="reply-text"><span class="reply-author"><i class="fas fa-reply"></i> Developer:</span> ${escapeHtml(req.reply)}<div style="font-size:0.7rem;color:#aaa;">${new Date(req.replyTimestamp).toLocaleString()}</div></div></div>` : '';
+      let replyBtn = (currentUser==='Charless') ? `<button class="reply-btn" data-id="${req.id}"><i class="fas fa-reply"></i> Balas</button>` : '';
+      return `<div class="request-card"><div class="request-header"><div class="request-title">${escapeHtml(req.title)}</div><div class="request-user"><i class="fas fa-user"></i> Dari: ${escapeHtml(req.username)}</div></div><div class="request-desc">${escapeHtml(req.description)}</div><div class="request-meta"><i class="far fa-clock"></i> ${date}</div>${replyHtml}${replyBtn}</div>`;
+    }).join("");
+    document.querySelectorAll(".reply-btn").forEach(btn => btn.addEventListener("click", () => { currentReplyId=btn.dataset.id; replyModal.style.display="flex"; }));
+  }
 
-  // Chat
+  // Chat (tetap localStorage)
   function loadChatMessages() { const s = localStorage.getItem("kccd_chat_messages"); if(s) try{ chatMessages=JSON.parse(s); }catch(e){ chatMessages=[]; } else chatMessages=[]; renderChatMessages(); }
   function saveChatMessages() { localStorage.setItem("kccd_chat_messages", JSON.stringify(chatMessages)); }
-  function renderChatMessages() { if(!chatMessagesDiv) return; if(chatMessages.length===0){ chatMessagesDiv.innerHTML='<div style="text-align:center; padding:20px;">Belum ada pesan</div>'; return; } chatMessagesDiv.innerHTML = chatMessages.map(msg=>{ let isMine = (currentUser===msg.username); let time = new Date(msg.timestamp).toLocaleString(); return `<div class="message ${isMine?'message-mine':'message-other'}"><div class="message-username"><span class="name"><i class="fas fa-user"></i> ${escapeHtml(msg.username)}</span><span class="time">${time}</span></div><div class="message-text">${escapeHtml(msg.text)}</div></div>`; }).join(""); chatMessagesDiv.scrollTop = chatMessagesDiv.scrollHeight; }
-  function sendChatMessage(text) { if(!currentUser){ showToast("Login dulu",true); return false; } if(!text.trim()){ showToast("Pesan kosong",true); return false; } let newMsg = { username:currentUser, text:text.trim(), timestamp:new Date().toISOString() }; chatMessages.push(newMsg); saveChatMessages(); renderChatMessages(); chatInput.value=""; return true; }
+  function renderChatMessages() {
+    if(!chatMessagesDiv) return;
+    if(chatMessages.length===0){ chatMessagesDiv.innerHTML='<div style="text-align:center;padding:20px;">Belum ada pesan</div>'; return; }
+    chatMessagesDiv.innerHTML = chatMessages.map(msg => {
+      let isMine = (currentUser===msg.username);
+      let time = new Date(msg.timestamp).toLocaleString();
+      return `<div class="message ${isMine?'message-mine':'message-other'}"><div class="message-username"><span class="name"><i class="fas fa-user"></i> ${escapeHtml(msg.username)}</span><span class="time">${time}</span></div><div class="message-text">${escapeHtml(msg.text)}</div></div>`;
+    }).join("");
+    chatMessagesDiv.scrollTop = chatMessagesDiv.scrollHeight;
+  }
+  function sendChatMessage(text) {
+    if(!currentUser){ showToast("Login dulu", true); return false; }
+    if(!text.trim()){ showToast("Pesan kosong", true); return false; }
+    let newMsg = { username: currentUser, text: text.trim(), timestamp: new Date().toISOString() };
+    chatMessages.push(newMsg); saveChatMessages(); renderChatMessages(); chatInput.value=""; return true;
+  }
 
   // Login
-  function login(username) { if(!username.trim()){ showToast("Nama tidak boleh kosong",true); return false; } currentUser = username.trim(); localStorage.setItem("kccd_username", currentUser); loginModal.style.display="none"; addScriptMenuItem.style.display = (currentUser==="Charless")?"flex":"none"; showToast(`Selamat datang, ${currentUser}!`,false); refreshMasterScripts(); renderRequests(); loadChatMessages(); return true; }
-  function logout() { currentUser=null; localStorage.removeItem("kccd_username"); addScriptMenuItem.style.display="none"; loginModal.style.display="flex"; refreshMasterScripts(); renderRequests(); renderChatMessages(); showToast("Logout berhasil",false); }
-  function checkLogin() { let saved = localStorage.getItem("kccd_username"); if(saved && saved.trim()!==""){ currentUser=saved; loginModal.style.display="none"; addScriptMenuItem.style.display = (currentUser==="Charless")?"flex":"none"; refreshMasterScripts(); renderRequests(); loadChatMessages(); } else { loginModal.style.display="flex"; addScriptMenuItem.style.display="none"; gridContainer.innerHTML='<div class="empty-msg"><i class="fas fa-lock"></i> Silakan login</div>'; } }
+  async function login(username) {
+    if(!username.trim()){ showToast("Nama tidak boleh kosong", true); return false; }
+    currentUser = username.trim();
+    localStorage.setItem("kccd_username", currentUser);
+    loginModal.style.display="none";
+    addScriptMenuItem.style.display = (currentUser==="Charless")?"flex":"none";
+    showToast(`Selamat datang, ${currentUser}!`, false);
+    await refreshMasterScripts();
+    renderRequests();
+    loadChatMessages();
+    return true;
+  }
+  async function logout() {
+    currentUser=null;
+    localStorage.removeItem("kccd_username");
+    addScriptMenuItem.style.display="none";
+    loginModal.style.display="flex";
+    await refreshMasterScripts();
+    renderRequests();
+    renderChatMessages();
+    showToast("Logout berhasil", false);
+  }
+  async function checkLogin() {
+    let saved = localStorage.getItem("kccd_username");
+    if(saved && saved.trim()!=="") {
+      currentUser=saved;
+      loginModal.style.display="none";
+      addScriptMenuItem.style.display = (currentUser==="Charless")?"flex":"none";
+      await refreshMasterScripts();
+      renderRequests();
+      loadChatMessages();
+    } else {
+      loginModal.style.display="flex";
+      addScriptMenuItem.style.display="none";
+      gridContainer.innerHTML='<div class="empty-msg"><i class="fas fa-lock"></i> Silakan login</div>';
+    }
+  }
 
   // WA
-  function joinWA() { window.open(WA_LINK,"_blank"); showToast("Buka channel WA lalu konfirmasi",false); }
-  function confirmJoin() { localStorage.setItem("kccd_joined","true"); joinModal.style.display="none"; showToast("Akses download aktif",false); if(pendingDownload){ startDownload(pendingDownload.url, pendingDownload.btn, pendingDownload.name); pendingDownload=null; } }
-  function resetJoinStatus() { localStorage.removeItem("kccd_joined"); showToast("Status join direset",false); }
+  function joinWA() { window.open(WA_LINK,"_blank"); showToast("Buka channel WA lalu konfirmasi", false); }
+  function confirmJoin() { localStorage.setItem("kccd_joined","true"); joinModal.style.display="none"; showToast("Akses download aktif", false); if(pendingDownload){ startDownload(pendingDownload.url, pendingDownload.btn, pendingDownload.name); pendingDownload=null; } }
+  function resetJoinStatus() { localStorage.removeItem("kccd_joined"); showToast("Status join direset", false); }
 
-  // Modal add script
-  function openAddModal() { if(currentUser!=='Charless'){ showToast("Hanya Charless",true); return; } addModal.style.display="flex"; }
+  function openAddModal() { if(currentUser!=='Charless'){ showToast("Hanya Charless", true); return; } addModal.style.display="flex"; }
   function closeAddModal() { addModal.style.display="none"; }
 
-  // Navigation
-  function navigateTo(pageId) { document.querySelectorAll(".page").forEach(p=>p.classList.remove("active-page")); document.getElementById(pageId).classList.add("active-page"); closeMenu(); if(pageId==='requests') renderRequests(); if(pageId==='chat'){ if(!currentUser) chatMessagesDiv.innerHTML='<div class="chat-login-prompt"><i class="fas fa-lock"></i> Login dulu</div>'; else loadChatMessages(); } }
+  function navigateTo(pageId) {
+    document.querySelectorAll(".page").forEach(p=>p.classList.remove("active-page"));
+    document.getElementById(pageId).classList.add("active-page");
+    closeMenu();
+    if(pageId==='requests') renderRequests();
+    if(pageId==='chat'){ if(!currentUser) chatMessagesDiv.innerHTML='<div style="text-align:center;padding:20px;"><i class="fas fa-lock"></i> Login dulu</div>'; else loadChatMessages(); }
+    if(pageId==='home') refreshMasterScripts();
+  }
   function openMenu() { sidebar.classList.add("active"); overlay.classList.add("active"); }
   function closeMenu() { sidebar.classList.remove("active"); overlay.classList.remove("active"); }
 
-  // Event listeners
+  // Event Listeners
   document.getElementById("menuBtn").addEventListener("click", openMenu);
   overlay.addEventListener("click", closeMenu);
   document.getElementById("logoutBtn").addEventListener("click", ()=>{ logout(); closeMenu(); });
@@ -701,18 +667,50 @@
   document.getElementById("confirmJoinedBtn").addEventListener("click", confirmJoin);
   document.getElementById("loginBtn").addEventListener("click", ()=>login(document.getElementById("loginUsername").value.trim()));
   document.getElementById("loginUsername").addEventListener("keypress", e=>{ if(e.key==="Enter") login(e.target.value.trim()); });
-  document.getElementById("submitAddScript").addEventListener("click", ()=>{ let name=document.getElementById("scriptName").value.trim(), desc=document.getElementById("scriptDesc").value.trim(), cat=document.getElementById("scriptCategory").value.trim(), img=document.getElementById("scriptImgUrl").value.trim(), url=document.getElementById("scriptUrl").value.trim(); if(!name||!cat||!url){ showToast("Lengkapi data",true); return; } addNewScript({name,desc,category:cat,img,url}); closeAddModal(); document.getElementById("scriptName").value=""; document.getElementById("scriptDesc").value=""; document.getElementById("scriptCategory").value=""; document.getElementById("scriptImgUrl").value=""; document.getElementById("scriptUrl").value=""; });
+  document.getElementById("submitAddScript").addEventListener("click", async ()=>{
+    let name=document.getElementById("scriptName").value.trim(),
+        desc=document.getElementById("scriptDesc").value.trim(),
+        cat=document.getElementById("scriptCategory").value.trim(),
+        img=document.getElementById("scriptImgUrl").value.trim(),
+        url=document.getElementById("scriptUrl").value.trim();
+    if(!name||!cat||!url){ showToast("Lengkapi data", true); return; }
+    await addNewScript({name,desc,category:cat,img,url});
+    closeAddModal();
+    document.getElementById("scriptName").value="";
+    document.getElementById("scriptDesc").value="";
+    document.getElementById("scriptCategory").value="";
+    document.getElementById("scriptImgUrl").value="";
+    document.getElementById("scriptUrl").value="";
+  });
   document.getElementById("closeAddModal").addEventListener("click", closeAddModal);
-  document.getElementById("submitRequestBtn").addEventListener("click", ()=>{ if(!currentUser){ showToast("Login dulu",true); return; } let title=document.getElementById("reqTitle").value.trim(), desc=document.getElementById("reqDesc").value.trim(); if(!title||!desc){ showToast("Isi judul & deskripsi",true); return; } addRequest(title,desc,currentUser); document.getElementById("reqTitle").value=""; document.getElementById("reqDesc").value=""; });
-  document.getElementById("sendReplyBtn").addEventListener("click", ()=>{ if(!currentReplyId) return; let reply=replyTextarea.value.trim(); if(!reply){ showToast("Balasan kosong",true); return; } replyToRequest(currentReplyId, reply); replyModal.style.display="none"; replyTextarea.value=""; currentReplyId=null; });
+  document.getElementById("submitRequestBtn").addEventListener("click", ()=>{
+    if(!currentUser){ showToast("Login dulu", true); return; }
+    let title=document.getElementById("reqTitle").value.trim(), desc=document.getElementById("reqDesc").value.trim();
+    if(!title||!desc){ showToast("Isi judul & deskripsi", true); return; }
+    addRequest(title, desc, currentUser);
+    document.getElementById("reqTitle").value="";
+    document.getElementById("reqDesc").value="";
+  });
+  document.getElementById("sendReplyBtn").addEventListener("click", ()=>{
+    if(!currentReplyId) return;
+    let reply=replyTextarea.value.trim();
+    if(!reply){ showToast("Balasan kosong", true); return; }
+    replyToRequest(currentReplyId, reply);
+    replyModal.style.display="none"; replyTextarea.value=""; currentReplyId=null;
+  });
   document.getElementById("closeReplyModal").addEventListener("click", ()=>{ replyModal.style.display="none"; replyTextarea.value=""; currentReplyId=null; });
-  chatSendBtn.addEventListener("click", ()=>{ if(!currentUser) showToast("Login dulu",true); else sendChatMessage(chatInput.value); });
-  chatInput.addEventListener("keypress", e=>{ if(e.key==="Enter"){ e.preventDefault(); if(!currentUser) showToast("Login dulu",true); else sendChatMessage(chatInput.value); } });
+  chatSendBtn.addEventListener("click", ()=>{ if(!currentUser) showToast("Login dulu", true); else sendChatMessage(chatInput.value); });
+  chatInput.addEventListener("keypress", e=>{ if(e.key==="Enter"){ e.preventDefault(); if(!currentUser) showToast("Login dulu", true); else sendChatMessage(chatInput.value); } });
   window.onclick = e=>{ if(e.target===joinModal) joinModal.style.display="none"; if(e.target===addModal) addModal.style.display="none"; if(e.target===replyModal) replyModal.style.display="none"; };
   searchInput.addEventListener("input", e=>{ currentSearch=e.target.value; renderScripts(); });
 
   // Init
-  window.addEventListener("load", ()=>{ setTimeout(()=>loaderDiv.style.display="none", 600); checkLogin(); requests = loadRequests(); renderRequests(); });
+  window.addEventListener("load", ()=>{
+    setTimeout(()=>loaderDiv.style.display="none", 600);
+    checkLogin();
+    requests = loadRequests();
+    renderRequests();
+  });
 </script>
 </body>
 </html>
